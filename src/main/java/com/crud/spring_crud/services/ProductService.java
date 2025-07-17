@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 
@@ -30,4 +31,10 @@ public class ProductService {
     public Optional<ProductModel> findById(UUID id) {
         return productRepository.findById(id);
     }
+
+    @Transactional
+    public void delete(ProductModel productModel) {
+        productRepository.delete(productModel);
+    }
+
 }
